@@ -36,16 +36,16 @@ void TestKM() {
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
         if (i == j) {
-          edges[i].emplace_back(j, 0.0);
+          edges[i].emplace_back(j + n, 0.0);
         }
         else {
-          edges[i].emplace_back(j, 1.0);
+          edges[i].emplace_back(j + n, 1.0);
         }
       }
     }
     std::vector<int> pas;
-    SparseMatchingKM(n, edges, pas);
-    for (int i = 0; i < n; i++)
+    SparseMatchingKM(n, n * 2, edges, pas);
+    for (int i = 0; i < n * 2; i++)
       std::cout << pas[i] << " ";
     std::cout << std::endl;
     delete[](edges);
